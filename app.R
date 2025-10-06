@@ -1,13 +1,29 @@
-library(shiny)
-library(shinythemes)
-library(shinyWidgets)
-library(ThesiStats)
-library(tidyverse)
-library(readxl)
-library(pwr)
-library(openxlsx)
-library(rlang)
-library(DT)
+# Función para instalar y cargar paquetes
+install_and_load <- function(packages) {
+  for (pkg in packages) {
+    if (!require(pkg, character.only = TRUE)) {
+      install.packages(pkg, dependencies = TRUE)
+      library(pkg, character.only = TRUE)
+    }
+  }
+}
+
+# Lista de paquetes requeridos
+required_packages <- c(
+  "shiny",
+  "shinythemes",
+  "shinyWidgets",
+  "ThesiStats",
+  "tidyverse",
+  "readxl",
+  "pwr",
+  "openxlsx",
+  "rlang",
+  "DT"
+)
+
+# Instalar y cargar todos los paquetes
+install_and_load(required_packages)
 
 # =====================================================
 # INTERFAZ DE USUARIO (UI)
