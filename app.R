@@ -8,12 +8,11 @@ install_and_load <- function(packages) {
   }
 }
 
-# Lista de paquetes requeridos
+# Lista de paquetes requeridos (CRAN)
 required_packages <- c(
   "shiny",
   "shinythemes",
   "shinyWidgets",
-  "ThesiStats",
   "tidyverse",
   "readxl",
   "pwr",
@@ -22,8 +21,18 @@ required_packages <- c(
   "DT"
 )
 
-# Instalar y cargar todos los paquetes
+# Instalar y cargar paquetes de CRAN
 install_and_load(required_packages)
+
+# Instalar y cargar ThesiStats desde GitHub
+if (!require("devtools")) {
+  install.packages("devtools")
+}
+
+if (!require("ThesiStats")) {
+  devtools::install_github("jventural/ThesiStats")
+  library(ThesiStats)
+}
 
 # =====================================================
 # INTERFAZ DE USUARIO (UI)
