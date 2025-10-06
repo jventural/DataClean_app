@@ -8,9 +8,20 @@ install_and_load <- function(packages) {
   }
 }
 
+# Instalar y cargar shiny primero (paquete base necesario)
+if (!require("shiny")) {
+  install.packages("shiny")
+  library(shiny)
+}
+
+# Instalar y cargar devtools (necesario para ThesiStats)
+if (!require("devtools")) {
+  install.packages("devtools")
+  library(devtools)
+}
+
 # Lista de paquetes requeridos (CRAN)
 required_packages <- c(
-  "shiny",
   "shinythemes",
   "shinyWidgets",
   "tidyverse",
@@ -25,10 +36,6 @@ required_packages <- c(
 install_and_load(required_packages)
 
 # Instalar y cargar ThesiStats desde GitHub
-if (!require("devtools")) {
-  install.packages("devtools")
-}
-
 if (!require("ThesiStats")) {
   devtools::install_github("jventural/ThesiStats")
   library(ThesiStats)
